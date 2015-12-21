@@ -9,6 +9,11 @@ def query_ulb(sid, uid):
         - sid and uid (str) are two tokens given as GET parameters by the user
         that is returning from a successful authentication on the ULB side.
     Returns a unicode string most likely conataining some xml.
+
+    Note: you may only get a valid response if you are requesting the data
+    from the same ip that the one associated with the domain name in 'return_url'
+    given to the client (see login_url). It will thus not work if you don't have
+    a public IP. Yay.
     '''
     if not sid.isalnum() or not uid.isalnum():
         raise ValueError("sid and uid must be alphanumeric values")
