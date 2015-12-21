@@ -21,6 +21,8 @@ class NetidBackend(object):
         xml = network.query_ulb(sid, uid)
         xml_user = parser.parse(xml)
 
+        # Get or create the user corresponding to the data
+        # recieved from the ULB api.
         try:
             user = User.objects.get(netid=xml_user.netid)
         except User.DoesNotExist:
@@ -31,6 +33,8 @@ class NetidBackend(object):
                 last_name=xml_user.last_name,
                 registration=xml_user.raw_matricule,
             )
+
+        # In both cases we need to update the last_login value
         user.last_login = timezone.now()
         user.save()
 
@@ -47,6 +51,8 @@ class NetidBackend(object):
                     year=inscription.year,
                 )
             except IntegrityError:
+                # We already have this inscription in the database
+                # so we don't give a fuck
                 pass
 
     def get_user(self, user_id):

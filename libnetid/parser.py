@@ -25,17 +25,25 @@ def parse(xml):
 
     for identity in xml_user.findall('identity'):
         raw_matricule = _findOrDefault(identity, 'matricule').lower()
+
+        # raw_matricule looks like "ulb:etudiants:000362588", we only need the last number
         matricule = raw_matricule.split(':')[-1].strip()
         if not matricule.isdigit():
             matricule = ''
         user.update(matricule=matricule, raw_matricule=raw_matricule)
 
+        # matricules from ULB looks like "ulb:etudiants:000123456"
         if raw_matricule.split(":")[0].strip() == 'ulb':
             user.update(university='ULB')
+
+        # VUB looks like "ids:vub:etudiants:0123456"
         elif len(raw_matricule.split(":")) > 1 and raw_matricule.split(":")[1] == 'vub'.strip():
             user.update(university='VUB')
 
+        # last_name seems to be always in caps
+        # we make our best to restore the original capitalization
         last_name = _findOrDefault(identity, 'nom').title()
+
         first_name = _findOrDefault(identity, 'prenom')
         user.update(first_name=first_name, last_name=last_name)
 
@@ -63,10 +71,13 @@ def parse(xml):
             slug = _findOrDefault(inscription, 'anet')
             faculty = _findOrDefault(inscription, 'facid')
 
+            # Check that year is a valid integer
             if year.isdigit():
                 obj = Inscription(year, slug, faculty)
                 user.update(inscriptions=[obj])
 
+    # If we didn't find any previous email, we craft a valid one
+    # from the netid + @ulb.ac.be
     user.update(mail=netid + '@ulb.ac.be')
 
     return user
@@ -81,11 +92,10 @@ def _findOrRaise(element, search):
 
 def _findOrDefault(element, search, default=''):
     ret = element.find(search)
+    if ret is not None:
+        ret = ret.text
+
     if ret is None:
         return default
     else:
-        text = ret.text
-        if text is None:
-            return ''
-        else:
-            return text.strip()
+        return ret.strip()
