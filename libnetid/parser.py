@@ -40,9 +40,11 @@ def parse(xml):
         elif len(raw_matricule.split(":")) > 1 and raw_matricule.split(":")[1] == 'vub'.strip():
             user.update(university='VUB')
 
+        last_name = _findOrDefault(identity, 'nom')
         # last_name seems to be always in caps
         # we make our best to restore the original capitalization
-        last_name = _findOrDefault(identity, 'nom').title()
+        if last_name.isupper():
+            last_name = last_name.title()
 
         first_name = _findOrDefault(identity, 'prenom')
         user.update(first_name=first_name, last_name=last_name)
