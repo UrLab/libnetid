@@ -48,7 +48,7 @@ class NetidBackend(object):
                     user=user,
                     faculty=inscription.faculty,
                     section=inscription.slug,
-                    year=inscription.year,
+                    year=int(inscription.year),
                 )
             except IntegrityError:
                 # We already have this inscription in the database
