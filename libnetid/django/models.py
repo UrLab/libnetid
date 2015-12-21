@@ -9,7 +9,7 @@ class LibNetidUserManager(UserManager):
     def _create_user(self, netid, password, **extra_fields):
         user = self.model(netid=netid, **extra_fields)
         user.set_password(password)
-        user.save()
+        user.save(using=self._db)
 
         return user
 
