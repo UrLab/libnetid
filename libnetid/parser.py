@@ -49,8 +49,8 @@ def parse(xml):
         first_name = _findOrDefault(identity, 'prenom')
         user.update(first_name=first_name, last_name=last_name)
 
-        birthday = _findOrDefault(identity, 'dateNaissance')
-        if birthday != '':
+        birthday = _findOrDefault(identity, 'dateNaissance', None)
+        if birthday is not None:
             birthday = datetime.strptime(birthday, '%d/%m/%Y').date()
         user.update(birthday=birthday)
 
