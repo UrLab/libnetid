@@ -1,0 +1,2 @@
+class IntranetError(Exception):
+    pass
