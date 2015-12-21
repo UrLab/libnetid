@@ -21,11 +21,7 @@ class LibNetidUserManager(UserManager):
 
 
 class User(AbstractBaseUser):
-
-    USERNAME_FIELD = 'netid'
-    REQUIRED_FIELDS = []
-    objects = LibNetidUserManager()
-
+    # Fields given by ULB api
     netid = models.CharField(max_length=20, unique=True)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
@@ -34,19 +30,26 @@ class User(AbstractBaseUser):
     birthday = models.DateField(blank=True)
     library = models.CharField(max_length=255, blank=True)
 
+    # Mandatory Django fields
     date_joined = models.DateTimeField(auto_now_add=True)
     last_login = models.DateTimeField(blank=True)
     is_staff = models.BooleanField(default=False)
 
-    @property
-    def matricule(self):
-        return self.raw_matricule.split(':')[-1]
+    USERNAME_FIELD = 'netid'
+    REQUIRED_FIELDS = []
+    objects = LibNetidUserManager()
 
     def get_full_name(self):
         return '%s %s' % (self.first_name, self.last_name)
 
     def get_short_name(self):
         return self.netid
+
+    # Convenience methods and properties.
+
+    @property
+    def matricule(self):
+        return self.raw_matricule.split(':')[-1]
 
 
 class Inscription(models.Model):
