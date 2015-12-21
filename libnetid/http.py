@@ -5,6 +5,8 @@ ULB_AUTH = 'https://www.ulb.ac.be/commons/check?_type=normal&_sid=%s&_uid=%s'
 
 
 def query_ulb(sid, uid):
+    if not sid.isalnum() or not uid.isalnum():
+        raise ValueError("sid and uid must be alphanumeric values")
     resp = requests.get(ULB_AUTH % (sid, uid))
     # force utf-8 because the ULB does not send the right header
     resp.encoding = 'utf-8'
