@@ -6,7 +6,7 @@ from django.conf import settings
 from django.utils import timezone
 
 
-from libnetid import network, parser
+from libnetid import http, parser
 from libnetid.models import Inscription
 
 User = get_user_model()
@@ -18,7 +18,7 @@ class NetidBackend(object):
         if not (sid and uid):
             return None
 
-        xml = network.query_ulb(sid, uid)
+        xml = http.query_ulb(sid, uid)
         xml_user = parser.parse(xml)
 
         # Get or create the user corresponding to the data

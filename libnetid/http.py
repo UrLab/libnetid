@@ -1,11 +1,11 @@
 import requests
 import furl
 
-ULB_AUTH = 'https://www.ulb.ac.be/commons/check?_type=normal&_sid={}&_uid={}'
+ULB_AUTH = 'https://www.ulb.ac.be/commons/check?_type=normal&_sid=%s&_uid=%s'
 
 
 def query_ulb(sid, uid):
-    resp = requests.get(ULB_AUTH.format(sid, uid))
+    resp = requests.get(ULB_AUTH % (sid, uid))
     # force utf-8 because the ULB does not send the right header
     resp.encoding = 'utf-8'
 
