@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<intranet>
+   <session>
+      <user>
+         <username>blabevue</username>
+         <identity>
+            <matricule>ulb:etudiants:000123456</matricule>
+            <nom>LABEVUE</nom>
+            <prenom>Bertrand</prenom>
+            <dateNaissance></dateNaissance>
+            <email>Bertrand.Labevue@ulb.ac.be</email>
+            <biblio></biblio>
+            <inscriptions>
+            </inscriptions>
+         </identity>
+      </user>
+   </session>
+</intranet>
