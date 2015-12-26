@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<intranet>
+    <session>
+        <sessionId>000001326C56D293</sessionId>
+        <ipAddress>127.0.0.1</ipAddress>
+        <creationDate>1316077621908</creationDate>
+        <modificationDate>1316077621908</modificationDate>
+        <accessingDate>1316078366070</accessingDate>
+        <sessionTimeout>1800000</sessionTimeout>
+        <keepAliveTimeout>300000</keepAliveTimeout>
+        <user access="yes" iup="AE8170">
+            <source>1</source>
+            <username>llibert</username>
+            <identity access="no">
+                <source>1</source>
+                <matricule>ids:ulb:personnel:14889</matricule>
+                <titre></titre>
+                <nom>LIBERT</nom>
+                <prenom>Luc</prenom>
+                <dateNaissance></dateNaissance>
+                <email></email>
+                <biblio></biblio>
+                <testMode>false</testMode>
+                <adminMode>false</adminMode>
+                <mandats/>
+                <inscriptions/>
+                <categories>
+                    <category>ids:all</category>
+                    <category>ids:ulb:all</category>
+                    <category>ids:ulb:categorie:13</category>
+                    <category>ids:ulb:personnel</category>
+                </categories>
+            </identity>
+            <identity access="no">
+                <source>1</source>
+                <matricule>ids:ulb:alumnis:792212</matricule>
+                <titre></titre>
+                <nom>LIBERT</nom>
+                <prenom>Luc</prenom>
+                <dateNaissance></dateNaissance>
+                <email></email>
+                <biblio></biblio>
+                <testMode>false</testMode>
+                <adminMode>false</adminMode>
+                <mandats/>
+                <inscriptions/>
+                <categories>
+                    <category>ids:all</category>
+                    <category>ids:ulb:all</category>
+                    <category>ids:ulb:categorie:24</category>
+                    <category>ids:ulb:alumnis</category>
+                </categories>
+            </identity>
+            <identity access="yes">
+                <source>5</source>
+                <matricule>ulb:personnel:14889</matricule>
+                <titre>M.</titre>
+                <nom>LIBERT</nom>
+                <prenom>Luc</prenom>
+                <dateNaissance>31/10/1991</dateNaissance>
+                <email>Luc.Libert@ulb.ac.be</email>
+                <biblio></biblio>
+                <testMode>false</testMode>
+                <adminMode>false</adminMode>
+                <mandats>
+                    <mandat>
+                        <source>5</source>
+                        <organisation>ulb:admin:di</organisation>
+                        <corpsId>A</corpsId>
+                        <corps>patgs</corps>
+                        <fonctionId>S68</fonctionId>
+                        <fonction>Informaticien expert</fonction>
+                        <unitId>XG30A</unitId>
+                        <unit>Dpt Inform, Développements WWW</unit>
+                    </mandat>
+                </mandats>
+                <inscriptions/>
+                <categories>
+                    <category>ulb:all</category>
+                    <category>ulb:personnel:all</category>
+                    <category>ulb:personnel:patgs</category>
+                    <category>ulb:admin:all</category>
+                    <category>ulb:admin:personnel:all</category>
+                    <category>ulb:admin:di:all</category>
+                    <category>ulb:admin:di:personnel:all</category>
+                    <category>ulb:admin:personnel:patgs</category>
+                    <category>ulb:admin:di:personnel:patgs</category>
+                    <category>ulb:services:XG30A:all</category>
+                    <category>ulb:services:XG30A:personnel:all</category>
+                    <category>ulb:services:XG30A:personnel:patgs</category>
+                </categories>
+            </identity>
+            <identity access="no">
+                <source>5</source>
+                <matricule>ulb:alumnis:792212</matricule>
+                <titre>M.</titre>
+                <nom>LIBERT</nom>
+                <prenom>Luc</prenom>
+                <dateNaissance>31/10/1991</dateNaissance>
+                <email>Luc.Libert@ulb.ac.be</email>
+                <biblio></biblio>
+                <testMode>false</testMode>
+                <adminMode>false</adminMode>
+                <mandats/>
+                <inscriptions/>
+                <categories/>
+            </identity>
+        </user>
+    </session>
+</intranet>
