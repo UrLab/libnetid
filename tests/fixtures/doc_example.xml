@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- This document comes from the official and public documentation of the API.
+It does not contain any private information.
+##
+It is an example for a response to a query with "check?_type=normal" -->
 <intranet>
     <session>
         <sessionId>0000013268A92302</sessionId>

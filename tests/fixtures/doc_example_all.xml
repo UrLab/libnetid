@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- This document comes from the official and public documentation of the API.
+It does not contain any private information.
+##
+It is an example for a response to a query with "check?_type=all"
+It does thus contain a lot more information (that we don't fully parse atm) -->
 <intranet>
     <session>
         <sessionId>000001326C56D293</sessionId>
