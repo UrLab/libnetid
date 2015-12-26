@@ -20,7 +20,7 @@ class LibNetidUserManager(UserManager):
         return self._create_user(netid, email, password, is_staff=True, **extra_fields)
 
 
-class User(AbstractBaseUser):
+class AbstractNetidUser(AbstractBaseUser):
     # Fields given by ULB api
     netid = models.CharField(max_length=20, unique=True)
     first_name = models.CharField(max_length=255)
@@ -50,6 +50,9 @@ class User(AbstractBaseUser):
     @property
     def matricule(self):
         return self.raw_matricule.split(':')[-1]
+
+    class Meta:
+        abstract = True
 
 
 class Inscription(models.Model):

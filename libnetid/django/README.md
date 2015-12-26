@@ -9,8 +9,9 @@ It will soon provide some default views for login/logout and an admin app.
 
 * `pip install libnetid`
 * add `libnetid.django` to your `INSTALLED_APPS`
-* set `AUTH_USER_MODEL = 'libnetid.django.models.User'`
-* add `'libnetid.django.backends.NetidBackend'` to `AUTHENTICATION_BACKENDS`
+* create a `User` model that subclasses `libnetid.django.models.AbstractNetidUser`
+* set `AUTH_USER_MODEL = 'YourUserModel'` in your settings
+* add `'libnetid.django.backends.NetidBackend'` to `AUTHENTICATION_BACKENDS` in your settings
 
 ## Configuration
 
