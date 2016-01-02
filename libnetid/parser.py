@@ -45,9 +45,13 @@ def parse(xml):
         # we make our best to restore the original capitalization
         if last_name.isupper():
             last_name = last_name.title()
+        user.update(last_name=last_name)
 
         first_name = _findOrDefault(identity, 'prenom')
-        user.update(first_name=first_name, last_name=last_name)
+        # first_name is also sometimes in caps (but less often)
+        if first_name.isupper():
+            first_name = first_name.title()
+        user.update(first_name=first_name)
 
         birthday = _findOrDefault(identity, 'dateNaissance', None)
         if birthday is not None:
