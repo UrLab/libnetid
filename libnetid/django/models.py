@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+import datetime
+
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, UserManager
 from django.conf import settings
@@ -27,7 +29,7 @@ class AbstractNetidUser(AbstractBaseUser):
     last_name = models.CharField(max_length=255)
     email = models.EmailField(unique=True)
     raw_matricule = models.CharField(max_length=255, blank=True)
-    birthday = models.DateField(blank=True)
+    birthday = models.DateField(blank=True, default=datetime.date(1970, 1, 1))
     library = models.CharField(max_length=255, blank=True)
 
     # Mandatory Django fields
