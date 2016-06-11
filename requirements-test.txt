@@ -1,2 +1,2 @@
 django
-py.test
+pytest
