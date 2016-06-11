@@ -1,5 +1,5 @@
 import requests
-import furl
+from furl import furl
 
 
 def query_ulb(sid, uid, all_identities=False):
