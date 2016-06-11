@@ -4,10 +4,10 @@ from django.contrib.auth import get_user_model
 from django.db import IntegrityError
 from django.conf import settings
 from django.utils import timezone
+from django.apps import apps
 
 
 from libnetid import http, parser
-from libnetid.models import Inscription
 
 User = get_user_model()
 
@@ -42,6 +42,9 @@ class NetidBackend(object):
             self._store_inscriptions(user, xml_user.inscriptions)
 
     def _store_inscriptions(self, user, inscriptions):
+        model_app, model_name  = settings.LIBNETID['inscriptions_model'].split(".")
+        Inscription = apps.get_model(app_label=model_app, model_name=model_name)
+
         for inscription in inscriptions:
             try:
                 Inscription.objects.create(
