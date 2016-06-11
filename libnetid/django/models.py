@@ -32,7 +32,6 @@ class AbstractNetidUser(AbstractBaseUser):
 
     # Mandatory Django fields
     date_joined = models.DateTimeField(auto_now_add=True)
-    last_login = models.DateTimeField(blank=True)
     is_staff = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'netid'
