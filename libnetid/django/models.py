@@ -1,8 +1,8 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AbstractBaseUser, UserManager
+from django.conf import settings
 
 
 class LibNetidUserManager(UserManager):
@@ -55,7 +55,7 @@ class AbstractNetidUser(AbstractBaseUser):
 
 
 class Inscription(models.Model):
-    user = models.ForeignKey(get_user_model())
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
     faculty = models.CharField(max_length=80, blank=True, default='')
     section = models.CharField(max_length=80, blank=True, default='')
     year = models.PositiveIntegerField(blank=True, null=True)
