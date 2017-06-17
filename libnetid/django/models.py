@@ -8,8 +8,8 @@ from django.conf import settings
 
 
 class LibNetidUserManager(UserManager):
-    def _create_user(self, netid, password, **extra_fields):
-        user = self.model(netid=netid, **extra_fields)
+    def _create_user(self, netid, email, password, **extra_fields):
+        user = self.model(netid=netid, email=email, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
 
@@ -19,7 +19,8 @@ class LibNetidUserManager(UserManager):
         return self._create_user(netid, password, **extra_fields)
 
     def create_superuser(self, netid, email, password, **extra_fields):
-        return self._create_user(netid, email, password, is_staff=True, **extra_fields)
+        user = self._create_user(netid, password, email, is_staff=True, **extra_fields)
+        return user
 
 
 class AbstractNetidUser(AbstractBaseUser):
