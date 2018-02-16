@@ -3,7 +3,8 @@ from __future__ import unicode_literals
 import datetime
 
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, UserManager
+from django.contrib.auth.models import AbstractBaseUser, UserManager, PermissionsMixin
+
 from django.conf import settings
 
 
@@ -19,11 +20,11 @@ class LibNetidUserManager(UserManager):
         return self._create_user(netid, email, password, **extra_fields)
 
     def create_superuser(self, netid, email, password, **extra_fields):
-        user = self._create_user(netid, password, email, is_staff=True, **extra_fields)
+        user = self._create_user(netid, password, email, is_superuser=True, **extra_fields)
         return user
 
 
-class AbstractNetidUser(AbstractBaseUser):
+class AbstractNetidUser(AbstractBaseUser, PermissionsMixin):
     # Fields given by ULB api
     netid = models.CharField(max_length=20, unique=True)
     first_name = models.CharField(max_length=255)
@@ -35,7 +36,10 @@ class AbstractNetidUser(AbstractBaseUser):
 
     # Mandatory Django fields
     date_joined = models.DateTimeField(auto_now_add=True)
-    is_staff = models.BooleanField(default=False)
+
+    @property
+    def is_staff(self):
+        return self.is_superuser
 
     USERNAME_FIELD = 'netid'
     REQUIRED_FIELDS = ['email']
