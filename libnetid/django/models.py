@@ -58,13 +58,11 @@ class AbstractNetidUser(AbstractBaseUser):
 
 
 class AbstractInscription(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     faculty = models.CharField(max_length=80, blank=True, default='')
     section = models.CharField(max_length=80, blank=True, default='')
     year = models.PositiveIntegerField(blank=True, null=True)
 
     class Meta:
         unique_together = ('user', 'section', 'faculty', 'year')
-
-    class Meta:
         abstract = True
