@@ -33,6 +33,7 @@ class AbstractNetidUser(AbstractBaseUser, PermissionsMixin):
     raw_matricule = models.CharField(max_length=255, blank=True)
     birthday = models.DateField(blank=True, default=datetime.date(1970, 1, 1))
     library = models.CharField(max_length=255, blank=True)
+    registration = models.CharField(max_length=255, blank=True)
 
     # Mandatory Django fields
     date_joined = models.DateTimeField(auto_now_add=True)
