@@ -20,7 +20,7 @@ class LibNetidUserManager(UserManager):
         return self._create_user(netid, email, password, **extra_fields)
 
     def create_superuser(self, netid, email, password, **extra_fields):
-        user = self._create_user(netid, password, email, is_superuser=True, **extra_fields)
+        user = self._create_user(netid, email, password, is_superuser=True, **extra_fields)
         return user
 
 
