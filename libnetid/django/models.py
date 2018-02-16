@@ -15,8 +15,8 @@ class LibNetidUserManager(UserManager):
 
         return user
 
-    def create_user(self, netid, password=None, **extra_fields):
-        return self._create_user(netid, password, **extra_fields)
+    def create_user(self, netid, email, password=None, **extra_fields):
+        return self._create_user(netid, email, password, **extra_fields)
 
     def create_superuser(self, netid, email, password, **extra_fields):
         user = self._create_user(netid, password, email, is_staff=True, **extra_fields)
@@ -38,7 +38,7 @@ class AbstractNetidUser(AbstractBaseUser):
     is_staff = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'netid'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['email']
     objects = LibNetidUserManager()
 
     def get_full_name(self):
